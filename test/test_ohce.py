@@ -5,6 +5,7 @@ import os
 
 from langue_anglaise import LangueAnglaise
 from langue_francaise import LangueFrançaise
+from utilities.verifiacteur_palindrome_builder import VérificateurPalindromeBuilder
 
 from verificateur_palindrome import VérificateurPalindrome
 
@@ -18,15 +19,13 @@ class PalindromeTest(unittest.TestCase):
 
     def test_miroir(self):
 
-        langue = LangueFrançaise()
-        vérificateur = VérificateurPalindrome(langue)
-
         # ETANT DONNE un non-palindrome
         cas = ["epsi", "romain", get_random_string(10), get_random_string(100)]
 
         for chaîne in cas:
             with self.subTest(chaîne):
                 # QUAND on vérifie si c'est un palindrome
+                vérificateur = VérificateurPalindromeBuilder.par_defaut()
                 résultat = vérificateur.vérifier(chaîne)
 
                 # ALORS la chaîne est renvoyée en miroir
@@ -66,12 +65,10 @@ class PalindromeTest(unittest.TestCase):
 
     def test_Bonjour(self):
 
-        langue = LangueFrançaise()
-        vérificateur = VérificateurPalindrome(langue)
-
         # ETANT DONNE une chaine
         chaine = "voiture"
         #QUAND on saisit une chaîne
+        vérificateur = VérificateurPalindromeBuilder.par_defaut()
         résultat = vérificateur.vérifier(chaine)
 
         #ALORS « Bonjour » est envoyé avant toute réponse
@@ -79,12 +76,12 @@ class PalindromeTest(unittest.TestCase):
         self.assertIn(attendu, résultat)
 
     def test_Au_Revoir(self):
-        langue = LangueFrançaise()
-        vérificateur = VérificateurPalindrome(langue)
+
 
         # ETANT DONNE une chaine
         chaine = "voiture"
         # QUAND on saisit une chaîne
+        vérificateur = VérificateurPalindromeBuilder.par_defaut()
         résultat = vérificateur.vérifier(chaine)
 
         # ALORS « Bonjour » est envoyé avant toute réponse
