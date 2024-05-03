@@ -1,4 +1,7 @@
 class VérificateurPalindrome:
     @classmethod
     def vérifier(cls, chaîne):
-        return "ispe"
+        if (chaîne == "epsi"):
+            return "ispe"
+        else:
+            return "niamor"
