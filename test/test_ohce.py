@@ -43,7 +43,7 @@ class PalindromeTest(unittest.TestCase):
         résultat = VérificateurPalindrome.vérifier(chaine)
 
         #ALORS « Bonjour » est envoyé avant toute réponse
-        attendu = "Bonjour\n" + VérificateurPalindrome.vérifier(chaine)
+        attendu = "Bonjour\n" + chaine[::-1]
         self.assertEqual(attendu, résultat)
 
 if __name__ == '__main__':
