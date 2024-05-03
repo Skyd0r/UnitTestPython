@@ -9,6 +9,6 @@ class VérificateurPalindrome:
     def vérifier(cls, chaîne):
         reverse = chaîne[::-1]
         if (reverse == chaîne):
-            return cls.BONJOUR + os.linesep + chaîne[::-1] + os.linesep + cls.BIEN_DIT +  os.linesep + cls.AU_REVOIR
+            return cls.BONJOUR + os.linesep + chaîne[::-1] + os.linesep + cls.WELL_SAID +  os.linesep + cls.AU_REVOIR
         else:
             return cls.BONJOUR + os.linesep + reverse +  os.linesep + cls.AU_REVOIR
