@@ -36,5 +36,15 @@ class PalindromeTest(unittest.TestCase):
         attendu = palindrome + "\nBien dit !"
         self.assertEqual(attendu, résultat)
 
+    def test_Bonjour(self):
+        # ETANT DONNE une chaine
+        chaine = "voiture"
+        #QUAND on saisit une chaîne
+        résultat = VérificateurPalindrome.vérifier(chaine)
+
+        #ALORS « Bonjour » est envoyé avant toute réponse
+        attendu = "Bonjour\n" + VérificateurPalindrome.vérifier(chaine)
+        self.assertEqual(attendu, résultat)
+
 if __name__ == '__main__':
     unittest.main()
