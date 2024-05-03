@@ -13,6 +13,16 @@ class PalindromeTest(unittest.TestCase):
         # ALORS la chaîne est renvoyée en miroir
         self.assertEqual("ispe", résultat)
 
+    def test_miroir2(self):
+        # ETANT DONNE un non-palindrome
+        chaîne = "romain"
+
+        # QUAND on vérifie si c'est un palindrome
+        résultat = VérificateurPalindrome.vérifier(chaîne)
+
+        # ALORS la chaîne est renvoyée en miroir
+        self.assertEqual("niamor", résultat)
+
 
 if __name__ == '__main__':
     unittest.main()
