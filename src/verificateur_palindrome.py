@@ -1,9 +1,13 @@
+import os
 class VérificateurPalindrome:
 
+    BIEN_DIT = "Bien dit !"
+    BONJOUR = "Bonjour"
+    AU_REVOIR = "Au revoir !"
     @classmethod
     def vérifier(cls, chaîne):
         reverse = chaîne[::-1]
         if (reverse == chaîne):
-            return "Bonjour\n" + chaîne[::-1] + "\nBien dit !"
+            return cls.BONJOUR + os.linesep + chaîne[::-1] + os.linesep + cls.BIEN_DIT
         else:
-            return "Bonjour\n" +reverse
+            return cls.BONJOUR + os.linesep + reverse

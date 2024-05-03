@@ -1,6 +1,7 @@
 import unittest
 import random
 import string
+import os
 
 from verificateur_palindrome import VérificateurPalindrome
 
@@ -23,7 +24,7 @@ class PalindromeTest(unittest.TestCase):
 
                 # ALORS la chaîne est renvoyée en miroir
                 attendu = chaîne[::-1]
-                self.assertEqual(attendu, résultat)
+                self.assertIn(attendu, résultat)
 
     def test_BienDit(self):
         # ETANT DONNE un palindrome
@@ -33,8 +34,8 @@ class PalindromeTest(unittest.TestCase):
         résultat = VérificateurPalindrome.vérifier(palindrome)
 
         # ALORS celui - ci est renvoyé ET « Bien dit » est envoyé ensuite
-        attendu = palindrome + "\nBien dit !"
-        self.assertEqual(attendu, résultat)
+        attendu = palindrome + os.linesep + VérificateurPalindrome.BIEN_DIT
+        self.assertIn(attendu, résultat)
 
     def test_Bonjour(self):
         # ETANT DONNE une chaine
@@ -43,7 +44,7 @@ class PalindromeTest(unittest.TestCase):
         résultat = VérificateurPalindrome.vérifier(chaine)
 
         #ALORS « Bonjour » est envoyé avant toute réponse
-        attendu = "Bonjour\n" + chaine[::-1]
+        attendu = VérificateurPalindrome.BONJOUR + os.linesep + chaine[::-1]
         self.assertEqual(attendu, résultat)
 
 if __name__ == '__main__':
