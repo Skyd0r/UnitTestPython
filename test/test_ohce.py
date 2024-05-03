@@ -45,7 +45,17 @@ class PalindromeTest(unittest.TestCase):
 
         #ALORS « Bonjour » est envoyé avant toute réponse
         attendu = VérificateurPalindrome.BONJOUR + os.linesep + chaine[::-1]
-        self.assertEqual(attendu, résultat)
+        self.assertIn(attendu, résultat)
+
+    def test_Au_Revoir(self):
+        # ETANT DONNE une chaine
+        chaine = "voiture"
+        # QUAND on saisit une chaîne
+        résultat = VérificateurPalindrome.vérifier(chaine)
+
+        # ALORS « Bonjour » est envoyé avant toute réponse
+        attendu = chaine[::-1] + os.linesep + VérificateurPalindrome.AU_REVOIR
+        self.assertIn(attendu, résultat)
 
 if __name__ == '__main__':
     unittest.main()
