@@ -5,23 +5,17 @@ from verificateur_palindrome import VérificateurPalindrome
 class PalindromeTest(unittest.TestCase):
     def test_miroir(self):
         # ETANT DONNE un non-palindrome
-        chaîne = "epsi"
+        cas = ["epsi", "romain"]
 
-        # QUAND on vérifie si c'est un palindrome
-        résultat = VérificateurPalindrome.vérifier(chaîne)
+        for chaîne in cas:
 
-        # ALORS la chaîne est renvoyée en miroir
-        self.assertEqual("ispe", résultat)
+            # QUAND on vérifie si c'est un palindrome
+            résultat = VérificateurPalindrome.vérifier(chaîne)
 
-    def test_miroir2(self):
-        # ETANT DONNE un non-palindrome
-        chaîne = "romain"
+            # ALORS la chaîne est renvoyée en miroir
+            attendu = chaîne[::-1]
+            self.assertEqual(attendu, résultat)
 
-        # QUAND on vérifie si c'est un palindrome
-        résultat = VérificateurPalindrome.vérifier(chaîne)
-
-        # ALORS la chaîne est renvoyée en miroir
-        self.assertEqual("niamor", résultat)
 
 
 if __name__ == '__main__':
