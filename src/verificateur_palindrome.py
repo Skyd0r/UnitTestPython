@@ -4,6 +4,7 @@ class VérificateurPalindrome:
     BIEN_DIT = "Bien dit !"
     BONJOUR = "Bonjour"
     AU_REVOIR = "Au revoir !"
+    WELL_SAID = "Well said"
     @classmethod
     def vérifier(cls, chaîne):
         reverse = chaîne[::-1]

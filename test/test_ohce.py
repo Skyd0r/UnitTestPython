@@ -37,6 +37,17 @@ class PalindromeTest(unittest.TestCase):
         attendu = palindrome + os.linesep + VérificateurPalindrome.BIEN_DIT
         self.assertIn(attendu, résultat)
 
+    def test_WellSaid(self):
+        # ETANT DONNE un palindrome
+        palindrome = "kayak"
+
+        # QUAND on saisit un palindrome
+        résultat = VérificateurPalindrome.vérifier(palindrome)
+
+        # ALORS celui - ci est renvoyé ET « Bien dit » est envoyé ensuite
+        attendu = palindrome + os.linesep + VérificateurPalindrome.WELL_SAID
+        self.assertIn(attendu, résultat)
+
     def test_Bonjour(self):
         # ETANT DONNE une chaine
         chaine = "voiture"
