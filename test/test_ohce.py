@@ -67,12 +67,31 @@ class PalindromeTest(unittest.TestCase):
 
         # ETANT DONNE une chaine
         chaine = "voiture"
+
+        # ET que l'utilisateur parle français
+        langue = LangueFrançaise()
+
         #QUAND on saisit une chaîne
-        vérificateur = VérificateurPalindromeBuilder.par_defaut()
+        vérificateur = VérificateurPalindrome(langue)
         résultat = vérificateur.vérifier(chaine)
 
         #ALORS « Bonjour » est envoyé avant toute réponse
-        attendu = VérificateurPalindrome.BONJOUR + os.linesep + chaine[::-1]
+        attendu = LangueFrançaise.BONJOUR + os.linesep + chaine[::-1]
+        self.assertIn(attendu, résultat)
+
+    def test_Hello(self):
+        # ETANT DONNE une chaine
+        chaine = "voiture"
+
+        # ET que l'utilisateur parle anglais
+        langue = LangueAnglaise()
+
+        # QUAND on saisit une chaîne
+        vérificateur = VérificateurPalindrome(langue)
+        résultat = vérificateur.vérifier(chaine)
+
+        # ALORS « Bonjour » est envoyé avant toute réponse
+        attendu = LangueAnglaise.HELLO + os.linesep + chaine[::-1]
         self.assertIn(attendu, résultat)
 
     def test_Au_Revoir(self):
@@ -80,12 +99,31 @@ class PalindromeTest(unittest.TestCase):
 
         # ETANT DONNE une chaine
         chaine = "voiture"
-        # QUAND on saisit une chaîne
-        vérificateur = VérificateurPalindromeBuilder.par_defaut()
+
+        # ET que l'utilisateur parle français
+        langue = LangueFrançaise()
+
+        #QUAND on saisit une chaîne
+        vérificateur = VérificateurPalindrome(langue)
         résultat = vérificateur.vérifier(chaine)
 
         # ALORS « Bonjour » est envoyé avant toute réponse
-        attendu = chaine[::-1] + os.linesep + VérificateurPalindrome.AU_REVOIR
+        attendu = chaine[::-1] + os.linesep + LangueFrançaise.AU_REVOIR
+        self.assertIn(attendu, résultat)
+
+    def test_Goodbye(self):
+        # ETANT DONNE une chaine
+        chaine = "voiture"
+
+        # ET que l'utilisateur parle français
+        langue = LangueAnglaise()
+
+        # QUAND on saisit une chaîne
+        vérificateur = VérificateurPalindrome(langue)
+        résultat = vérificateur.vérifier(chaine)
+
+        # ALORS « Bonjour » est envoyé avant toute réponse
+        attendu = chaine[::-1] + os.linesep + LangueAnglaise.GOODBYE
         self.assertIn(attendu, résultat)
 
 if __name__ == '__main__':

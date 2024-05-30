@@ -9,3 +9,7 @@ class VérificateurPalindromeBuilder:
     @classmethod
     def par_defaut(cls):
         return VérificateurPalindromeBuilder().build()
+
+    def ayant_pour_langue(self, langue):
+        self.__langue = langue
+        return self
