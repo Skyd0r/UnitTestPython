@@ -4,7 +4,7 @@ class langueDeBase:
         return ''
 
     @staticmethod
-    def saluer():
+    def saluer(moment):
         return ''
 
     @staticmethod

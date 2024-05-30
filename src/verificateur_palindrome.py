@@ -3,7 +3,8 @@ import os
 
 class VérificateurPalindrome:
 
-    def __init__(self, langue):
+    def __init__(self, langue, moment):
+        self.__moment = moment
         self.__langue = langue
         pass
 
@@ -11,7 +12,7 @@ class VérificateurPalindrome:
         reverse = chaîne[::-1]
 
         félicitations = self.__langue.féliciter()
-        salutations = self.__langue.saluer()
+        salutations = self.__langue.saluer(self.__moment)
         acquittance = self.__langue.acquitter()
 
 

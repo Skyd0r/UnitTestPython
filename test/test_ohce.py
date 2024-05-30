@@ -8,6 +8,8 @@ from langue_francaise import LangueFrançaise
 from utilities.verifiacteur_palindrome_builder import VérificateurPalindromeBuilder
 
 from verificateur_palindrome import VérificateurPalindrome
+from moment_de_la_journée import MomentDeLaJournée
+
 
 
 def get_random_string(length):
@@ -38,7 +40,7 @@ class PalindromeTest(unittest.TestCase):
 
         # ET que l'utilisateur parle français
         langue = LangueFrançaise()
-        vérificateur = VérificateurPalindrome(langue)
+        vérificateur = VérificateurPalindromeBuilder().ayant_pour_langue(langue).build()
 
         # QUAND on saisit un palindrome
         résultat = vérificateur.vérifier(palindrome)
@@ -54,7 +56,7 @@ class PalindromeTest(unittest.TestCase):
 
         # ET que l'utilisateur parle anglais
         langue = LangueAnglaise()
-        vérificateur = VérificateurPalindrome(langue)
+        vérificateur = VérificateurPalindromeBuilder().ayant_pour_langue(langue).build()
 
         # QUAND on saisit un palindrome
         résultat = vérificateur.vérifier(palindrome)
@@ -72,7 +74,7 @@ class PalindromeTest(unittest.TestCase):
         langue = LangueFrançaise()
 
         #QUAND on saisit une chaîne
-        vérificateur = VérificateurPalindrome(langue)
+        vérificateur = VérificateurPalindromeBuilder().ayant_pour_langue(langue).build()
         résultat = vérificateur.vérifier(chaine)
 
         #ALORS « Bonjour » est envoyé avant toute réponse
@@ -87,7 +89,7 @@ class PalindromeTest(unittest.TestCase):
         langue = LangueAnglaise()
 
         # QUAND on saisit une chaîne
-        vérificateur = VérificateurPalindrome(langue)
+        vérificateur = VérificateurPalindromeBuilder().ayant_pour_langue(langue).build()
         résultat = vérificateur.vérifier(chaine)
 
         # ALORS « Bonjour » est envoyé avant toute réponse
@@ -104,7 +106,7 @@ class PalindromeTest(unittest.TestCase):
         langue = LangueFrançaise()
 
         #QUAND on saisit une chaîne
-        vérificateur = VérificateurPalindrome(langue)
+        vérificateur = VérificateurPalindromeBuilder().ayant_pour_langue(langue).build()
         résultat = vérificateur.vérifier(chaine)
 
         # ALORS « Bonjour » est envoyé avant toute réponse
@@ -119,12 +121,45 @@ class PalindromeTest(unittest.TestCase):
         langue = LangueAnglaise()
 
         # QUAND on saisit une chaîne
-        vérificateur = VérificateurPalindrome(langue)
+        vérificateur = VérificateurPalindromeBuilder().ayant_pour_langue(langue).build()
         résultat = vérificateur.vérifier(chaine)
 
         # ALORS « Bonjour » est envoyé avant toute réponse
         attendu = chaine[::-1] + os.linesep + LangueAnglaise.GOODBYE
         self.assertIn(attendu, résultat)
+
+
+    def test_bonjour_nuit(self):
+        cas = [
+            ["kayak", LangueAnglaise(), LangueAnglaise.GOOD_NIGHT],
+            ["voiture", LangueAnglaise(), LangueAnglaise.GOOD_NIGHT],
+            ["kayak", LangueFrançaise(), LangueFrançaise.BONSOIR],
+            ["voiture", LangueFrançaise(), LangueFrançaise.BONSOIR],
+        ]
+
+        for test in cas:
+            chaîne = test[0]
+            langue = test[1]
+            salutations = test[2]
+
+            with self.subTest(f"{chaîne} - {langue}"):
+                # ETANT DONNE une <chaîne>
+                # ET que l'utilisateur parle <langue>
+                # ET que le moment de la journée est la nuit
+                moment = MomentDeLaJournée.Nuit
+
+                # QUAND on vérifie si c'est un palindrome
+                vérificateur = VérificateurPalindromeBuilder().ayant_pour_langue(langue).ayant_pour_moment_de_la_journée(moment).build()
+
+                résultat = vérificateur.vérifier(chaîne)
+
+                # ALORS la chaîne renvoyée est précédée des salutations de cette langue
+                lignes = résultat.split(os.linesep)
+                self.assertEqual(salutations, lignes[0])
+
+
+
+
 
 if __name__ == '__main__':
     unittest.main()
