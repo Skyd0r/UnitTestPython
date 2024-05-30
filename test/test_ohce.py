@@ -157,7 +157,18 @@ class PalindromeTest(unittest.TestCase):
                 lignes = résultat.split(os.linesep)
                 self.assertEqual(salutations, lignes[0])
 
+    def test_saut_de_ligne_finale(self):
 
+        # ETANT DONNE une chaine
+        chaine = "voiture"
+
+        # QUAND on vérifie si c'est un palindrome
+        vérificateur = VérificateurPalindromeBuilder.par_defaut()
+        résultat = vérificateur.vérifier(chaine)
+
+        # ALORS il y a un saut de ligne final
+        attendu = chaine[::-1]
+        self.assertTrue(attendu.endswith(os.linesep), résultat)
 
 
 
