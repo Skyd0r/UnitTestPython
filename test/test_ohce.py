@@ -162,12 +162,15 @@ class PalindromeTest(unittest.TestCase):
         # ETANT DONNE une chaine
         chaine = "voiture"
 
-        # QUAND on vérifie si c'est un palindrome
-        vérificateur = VérificateurPalindromeBuilder.par_defaut()
+        # ET que l'utilisateur parle anglais
+        langue = LangueAnglaise()
+
+        # QUAND on saisit une chaîne
+        vérificateur = VérificateurPalindromeBuilder().ayant_pour_langue(langue).build()
         résultat = vérificateur.vérifier(chaine)
 
         # ALORS il y a un saut de ligne final
-        attendu = chaine[::-1]
+        attendu = LangueAnglaise.HELLO + os.linesep + chaine[::-1] + os.linesep + LangueAnglaise.GOODBYE + os.linesep
         self.assertTrue(attendu.endswith(os.linesep), résultat)
 
 

@@ -17,6 +17,17 @@ class VérificateurPalindrome:
 
 
         if (reverse == chaîne):
-            return salutations + os.linesep + chaîne[::-1] + os.linesep + félicitations + os.linesep + acquittance
+            #return salutations + os.linesep + chaîne[::-1] + os.linesep + félicitations + os.linesep + acquittance
+            ReturnPalindrome = salutations + os.linesep + chaîne[::-1] + os.linesep + félicitations + os.linesep + acquittance
+            if ReturnPalindrome.endswith(os.linesep):
+                return ReturnPalindrome
+            else:
+                return ReturnPalindrome + os.linesep
         else:
-            return salutations + os.linesep + reverse + os.linesep + acquittance
+            #return salutations + os.linesep + reverse + os.linesep + acquittance
+            ReturnPasPalindrome = salutations + os.linesep + reverse + os.linesep + acquittance
+            if ReturnPasPalindrome.endswith(os.linesep):
+                return ReturnPasPalindrome
+            else:
+                return ReturnPasPalindrome + os.linesep
+
