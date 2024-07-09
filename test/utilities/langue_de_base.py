@@ -8,5 +8,5 @@ class langueDeBase:
         return ''
 
     @staticmethod
-    def acquitter():
+    def acquitter(moment):
         return ''

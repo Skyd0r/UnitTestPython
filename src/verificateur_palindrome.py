@@ -13,7 +13,7 @@ class VérificateurPalindrome:
 
         félicitations = self.__langue.féliciter()
         salutations = self.__langue.saluer(self.__moment)
-        acquittance = self.__langue.acquitter()
+        acquittance = self.__langue.acquitter(self.__moment)
 
 
         if (reverse == chaîne):

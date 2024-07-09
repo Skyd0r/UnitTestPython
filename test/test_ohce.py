@@ -87,13 +87,14 @@ class PalindromeTest(unittest.TestCase):
 
         # ET que l'utilisateur parle anglais
         langue = LangueAnglaise()
+        moment = MomentDeLaJournée.Matin
 
         # QUAND on saisit une chaîne
-        vérificateur = VérificateurPalindromeBuilder().ayant_pour_langue(langue).build()
+        vérificateur = VérificateurPalindromeBuilder().ayant_pour_langue(langue).ayant_pour_moment_de_la_journée(moment).build()
         résultat = vérificateur.vérifier(chaine)
 
         # ALORS « Bonjour » est envoyé avant toute réponse
-        attendu = LangueAnglaise.HELLO + os.linesep + chaine[::-1]
+        attendu = LangueAnglaise.GOOD_MORNING + os.linesep + chaine[::-1]
         self.assertIn(attendu, résultat)
 
     def test_Au_Revoir(self):
@@ -104,28 +105,31 @@ class PalindromeTest(unittest.TestCase):
 
         # ET que l'utilisateur parle français
         langue = LangueFrançaise()
+        moment = MomentDeLaJournée.Nuit
 
         #QUAND on saisit une chaîne
-        vérificateur = VérificateurPalindromeBuilder().ayant_pour_langue(langue).build()
+        vérificateur = VérificateurPalindromeBuilder().ayant_pour_langue(langue).ayant_pour_moment_de_la_journée(moment).build()
         résultat = vérificateur.vérifier(chaine)
 
         # ALORS « Bonjour » est envoyé avant toute réponse
-        attendu = chaine[::-1] + os.linesep + LangueFrançaise.AU_REVOIR
+        attendu = chaine[::-1] + os.linesep + LangueFrançaise.BONNE_NUIT
         self.assertIn(attendu, résultat)
 
-    def test_Goodbye(self):
+    def test_Goodnight(self):
         # ETANT DONNE une chaine
         chaine = "voiture"
 
         # ET que l'utilisateur parle français
         langue = LangueAnglaise()
+        moment = MomentDeLaJournée.Nuit
+
 
         # QUAND on saisit une chaîne
-        vérificateur = VérificateurPalindromeBuilder().ayant_pour_langue(langue).build()
+        vérificateur = VérificateurPalindromeBuilder().ayant_pour_langue(langue).ayant_pour_moment_de_la_journée(moment).build()
         résultat = vérificateur.vérifier(chaine)
 
         # ALORS « Bonjour » est envoyé avant toute réponse
-        attendu = chaine[::-1] + os.linesep + LangueAnglaise.GOODBYE
+        attendu = chaine[::-1] + os.linesep + LangueAnglaise.GOOD_NIGHT
         self.assertIn(attendu, résultat)
 
 

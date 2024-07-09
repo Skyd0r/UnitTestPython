@@ -2,4 +2,6 @@ import enum
 
 class MomentDeLaJournée(enum.Enum):
     Nuit = 0
-    Jour = 1
+    Matin = 1
+    ApresMidi = 2
+    Soiree = 3

@@ -15,5 +15,5 @@ class LangueSystème:
     def saluer(self, moment):
         return self.__langueUtilisateur.saluer(moment)
 
-    def acquitter(self):
-        return self.__langueUtilisateur.acquitter()
+    def acquitter(self, moment):
+        return self.__langueUtilisateur.acquitter(moment)
